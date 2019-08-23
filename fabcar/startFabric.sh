@@ -141,13 +141,9 @@ docker exec \
     --tls \
     --cafile ${ORDERER_TLS_ROOTCERT_FILE} \
     --peerAddresses peer0.org1.example.com:7051 \
-    --peerAddresses peer1.org1.example.com:8051 \
     --peerAddresses peer0.org2.example.com:9051 \
-    --peerAddresses peer1.org2.example.com:10051 \
-    --tlsRootCertFiles ${ORG1_TLS_ROOTCERT_FILE} \
     --tlsRootCertFiles ${ORG1_TLS_ROOTCERT_FILE} \
     --tlsRootCertFiles ${ORG2_TLS_ROOTCERT_FILE} \
-    --tlsRootCertFiles ${ORG2_TLS_ROOTCERT_FILE}
 set +x
 
 cat <<EOF
