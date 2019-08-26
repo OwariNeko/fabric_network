@@ -69,6 +69,13 @@ joinChannel () {
 	#     done
 	# done
 			joinChannelWithRetry 0 1
+	 	echo "===================== peer0.org1 joined channel '$CHANNEL_NAME' ===================== "
+		sleep $DELAY
+
+			joinChannelWithRetry 0 2
+		echo "===================== peer0.org2 joined channel '$CHANNEL_NAME' ===================== "
+	    sleep $DELAY
+
 
 }
 

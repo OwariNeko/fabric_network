@@ -55,6 +55,7 @@ type Car struct {
  * Best practice is to have any Ledger initialization in separate function -- see initLedger()
  */
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
+	s.initLedger(APIstub)
 	return shim.Success(nil)
 }
 
