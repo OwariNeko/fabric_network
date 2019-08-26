@@ -124,12 +124,13 @@ docker exec \
     --tlsRootCertFiles ${ORG1_TLS_ROOTCERT_FILE}
 
 echo "Waiting for instantiation request to be committed ..."
-sleep 10
+sleep 15
 
 echo "Submitting initLedger transaction to smart contract on mychannel"
 echo "The transaction is sent to all of the peers so that chaincode is built before receiving the following requests"
 docker exec \
   -e CORE_PEER_LOCALMSPID=Org1MSP \
+  -e CORE_PEER_ADDRESS=peer0.org1.example.com:7051 \
   -e CORE_PEER_MSPCONFIGPATH=${ORG1_MSPCONFIGPATH} \
   cli \
   peer chaincode invoke \
@@ -141,9 +142,7 @@ docker exec \
     --tls \
     --cafile ${ORDERER_TLS_ROOTCERT_FILE} \
     --peerAddresses peer0.org1.example.com:7051 \
-    --peerAddresses peer0.org2.example.com:9051 \
-    --tlsRootCertFiles ${ORG1_TLS_ROOTCERT_FILE} \
-    --tlsRootCertFiles ${ORG2_TLS_ROOTCERT_FILE} \
+    --tlsRootCertFiles ${ORG1_TLS_ROOTCERT_FILE} 
 set +x
 
 cat <<EOF
